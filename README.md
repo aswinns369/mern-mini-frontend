@@ -46,8 +46,7 @@ This application provides a responsive and interactive UI for users to browse pr
 - Token attached to request headers
 - Handles loading and error states
 
----     
----
+---    
 
 ##  Setup Instructions
 
