@@ -1,16 +1,49 @@
-# React + Vite
+# Community E-Commerce Platform – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The frontend of a Community E-Commerce Platform built using **React + Vite**.  
+This application provides a responsive and interactive UI for users to browse products, manage carts, and place orders by communicating with a MERN-based backend API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Repositories
 
-## React Compiler
+- **Frontend Repository:** (this repository)
+- **Backend Repository:** ps://github.com/aswinns369/mern-mini-backend
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### User Features
+- User registration & login (JWT-based authentication)
+- Browse all products
+- View product details
+- Search products
+- Filter products by category
+- Add products to cart
+- Update & remove cart items
+- Checkout with total price calculation
+
+### Authorization
+- Protected routes for authenticated users
+- Token-based access using JWT
+
+---
+
+##  Tech Stack
+- React.js (Vite)
+- React Router DOM
+- Axios
+- Context API
+- HTML5, CSS3
+- JavaScript (ES6+)
+
+---
+
+##  Frontend–Backend Communication
+- REST APIs consumed using Axios
+- JWT stored in localStorage
+- Token attached to request headers
+- Handles loading and error states
+
+---
