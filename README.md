@@ -8,7 +8,7 @@ This application provides a responsive and interactive UI for users to browse pr
 ## Project Repositories
 
 - **Frontend Repository:** (this repository)
-- **Backend Repository:** ps://github.com/aswinns369/mern-mini-backend
+- **Backend Repository:** https://github.com/aswinns369/mern-mini-backend
 
 ---
 
@@ -46,4 +46,11 @@ This application provides a responsive and interactive UI for users to browse pr
 - Token attached to request headers
 - Handles loading and error states
 
+---     
 ---
+
+##  Setup Instructions
+
+```bash
+npm install
+npm run dev
