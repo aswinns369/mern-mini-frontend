@@ -23,7 +23,7 @@
 
 This repository contains the frontend client for a full-stack E-Commerce Web Application using the MERN stack. It interfaces seamlessly with the [Backend REST API](https://github.com/aswinns369/mern-mini-backend) to provide users with a complete end-to-end shopping experience, from browsing products to managing carts and secure user authentication.
 
-🔗 **Frontend Repository:** [mern-mini-project](https://github.com/aswinns369/mern-mini-frontend)  
+🔗 **Frontend Repository:** [mern-mini-frontend](https://github.com/aswinns369/mern-mini-frontend)  
 🔗 **Backend Repository:** [mern-mini-backend](https://github.com/aswinns369/mern-mini-backend)
 
 *(Add screenshots of your application UI here to showcase your design skills)*
