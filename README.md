@@ -4,7 +4,6 @@
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
   <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
 </div>
 
 <br />
@@ -30,14 +29,14 @@ This repository contains the frontend client for a full-stack E-Commerce Web App
 
 ### User Experience & Interface
 - **Dynamic Product Grid:** Responsive product showcase with dynamic aspect ratios and premium visual fidelity.
-- **Myntra-Inspired Design:** Clean, minimalist UI crafted with pure Vanilla CSS, optimized for lightning-fast load times.
+- **Myntra-Inspired Design:** Clean, minimalist UI crafted with pure  CSS, optimized for lightning-fast load times.
 - **Client-Side Routing:** Seamless and fast navigation using `react-router-dom` without full page reloads.
 
 ### Core Business Logic
 - **Authentication & Authorization:** Secure JWT-based login and signup flow with resilient session state handling.
 - **Cart Management:** Real-time adding/removing of products, dynamic quantity adjustments, and immediate cart total summaries.
 - **Product Operations (CRUD):** Authenticated users can securely add, edit, and delete products directly through intuitive, user-friendly forms.
-- **Image Upload Integration:** Works with the backend (Multer/Cloud API) to seamlessly upload and display product images.
+- **Image Upload Integration:** Works with the backend (Multer) to seamlessly upload and display product images.
 
 ---
 
@@ -48,7 +47,7 @@ This project was built with a strong focus on clean code practices, modular comp
 - **Core Framework:** React 19 (Hooks/Functional Components)
 - **Build Tool:** Vite (For ultra-fast HMR and optimized production builds)
 - **Routing:** React Router v7
-- **Styling:** Vanilla CSS3 (Custom CSS properties, CSS Grid, Flexbox, media queries for comprehensive responsiveness)
+- **Styling:**  CSS
 - **Network Requests:** Axios (Configured for API interceptions and JWT authorization header attachments)
 
 ---
