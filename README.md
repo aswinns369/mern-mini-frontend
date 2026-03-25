@@ -26,11 +26,6 @@ This repository contains the frontend client for a full-stack E-Commerce Web App
 🔗 **Frontend Repository:** [mern-mini-frontend](https://github.com/aswinns369/mern-mini-frontend)  
 🔗 **Backend Repository:** [mern-mini-backend](https://github.com/aswinns369/mern-mini-backend)
 
-*(Add screenshots of your application UI here to showcase your design skills)*
-> `![Home Page Screenshot](./assets/screenshot.png)`
-
----
-
 ## ✨ Key Features & Technical Highlights
 
 ### User Experience & Interface
@@ -82,7 +77,7 @@ Follow these instructions to set up the project locally on your machine.
 3. **Configure Environment Variables:**
    Create a `.env` file in the root directory and configure your backend API base URL (ensure your backend is also running):
    ```env
-   VITE_API_BASE_URL=http://localhost:8000/api
+   VITE_API_BASE_URL=http://localhost:8000
    ```
 
 4. **Start the Development Server:**
