@@ -1,18 +1,10 @@
-
 import "./navbar.css";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Search, User, Heart, ShoppingBag } from "lucide-react";
 
 const CATEGORY_OPTIONS = [
-  "All",
-  "Electronics",
-  "Clothing",
-  "Home",
-  "Books",
-  "Sports",
-  "Beauty",
-  "Grocery",
-  "Toys",
+  "All", "Electronics", "Clothing", "Home", "Books", "Sports", "Beauty", "Grocery", "Toys",
 ];
 
 const Navbar = () => {
@@ -70,85 +62,123 @@ const Navbar = () => {
   };
 
   return (
-    <header className="nav">
-      <div className="nav__brand" onClick={() => navigate("/")}>
-        mini<span>zon</span>
+    <header className="myntra-nav">
+      <div className="nav-left">
+        <div className="nav__brand" onClick={() => navigate("/")}>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="myntra-logo">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-5l-2.5 2.5-2.5-2.5v5H4v-9l4 4 3-3 3 3 4-4v9h-2z" fill="#ff3f6c"/>
+          </svg>
+        </div>
+        <nav className="nav-categories">
+          {CATEGORY_OPTIONS.slice(1, 6).map(cat => (
+             <span key={cat} onClick={() => {
+                const p = new URLSearchParams(window.location.search);
+                p.set("category", cat);
+                navigate("/?" + p.toString());
+             }}>{cat.toUpperCase()}</span>
+          ))}
+        </nav>
       </div>
 
-      <form className="nav__search" onSubmit={submit}>
-        <input
-          className="nav__input"
-          placeholder="Search products"
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-        />
-        <button className="nav__btn" type="submit">
-          Search
-        </button>
-      </form>
-
-      <div className="filter-box">
-        <button className="filter-btn" onClick={() => setFilterOpen(!filterOpen)}>
-          Filters ▾
-        </button>
-
-        {filterOpen && (
-          <div className="filter-dropdown">
-            <label>Category</label>
-            <select
-              value={filters.category}
-              onChange={(e) =>
-                setFilters((v) => ({ ...v, category: e.target.value }))
-              }
-            >
-              {CATEGORY_OPTIONS.map((c) => (
-                <option key={c}>{c}</option>
-              ))}
-            </select>
-
-            <label>Min Price</label>
-            <input
-              type="number"
-              value={filters.minPrice}
-              onChange={(e) =>
-                setFilters((v) => ({ ...v, minPrice: e.target.value }))
-              }
-            />
-
-            <label>Max Price</label>
-            <input
-              type="number"
-              value={filters.maxPrice}
-              onChange={(e) =>
-                setFilters((v) => ({ ...v, maxPrice: e.target.value }))
-              }
-            />
-
-            <button className="apply-btn" onClick={applyFilters}>
-              Apply Filters
-            </button>
+      <div className="nav-center">
+        <form className="nav__search" onSubmit={submit}>
+          <div className="search-icon-wrapper">
+             <Search size={18} color="#696e79" />
           </div>
-        )}
+          <input
+            className="nav__input"
+            placeholder="Search for products, brands and more"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+          />
+        </form>
       </div>
 
-      <nav className="nav__links">
-        <Link to="/cart">Cart</Link>
-        {user ? (
-          <>
-            <span className="nav__user">Hi, {user.name}</span>
-            <Link to="/my-products">My Products</Link>
-            <Link to="/add-product">Sell</Link>
-            <button className="logout-btn" onClick={handleLogout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-          </>
-        )}
-      </nav>
+      <div className="nav-right">
+         <div className="filter-box">
+             <div className="action-item" onClick={() => setFilterOpen(!filterOpen)}>
+               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginBottom: '4px'}}><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+               <span>Filters</span>
+             </div>
+             {filterOpen && (
+              <div className="filter-dropdown">
+                <h4>Refine Results</h4>
+                <label>Category</label>
+                <select
+                  value={filters.category}
+                  onChange={(e) =>
+                    setFilters((v) => ({ ...v, category: e.target.value }))
+                  }
+                >
+                  {CATEGORY_OPTIONS.map((c) => (
+                    <option key={c}>{c}</option>
+                  ))}
+                </select>
+
+                <label>Min Price</label>
+                <input
+                  type="number"
+                  placeholder="₹ MIN"
+                  value={filters.minPrice}
+                  onChange={(e) =>
+                    setFilters((v) => ({ ...v, minPrice: e.target.value }))
+                  }
+                />
+
+                <label>Max Price</label>
+                <input
+                  type="number"
+                  placeholder="₹ MAX"
+                  value={filters.maxPrice}
+                  onChange={(e) =>
+                    setFilters((v) => ({ ...v, maxPrice: e.target.value }))
+                  }
+                />
+
+                <button className="apply-btn" onClick={applyFilters}>
+                  APPLY
+                </button>
+              </div>
+            )}
+         </div>
+
+         {user ? (
+            <div className="action-item profile-dropdown-wrapper">
+              <User size={20} />
+              <span>Profile</span>
+              <div className="profile-dropdown">
+                  <div className="profile-header">
+                     <p className="bold">Hello {user.name}</p>
+                     <p className="phone">{user.email}</p>
+                  </div>
+                  <div className="profile-links">
+                     <Link to="/my-products">My Products</Link>
+                     <Link to="/add-product">Sell</Link>
+                  </div>
+                  <div className="profile-logout">
+                     <button onClick={handleLogout}>Logout</button>
+                  </div>
+              </div>
+            </div>
+         ) : (
+            <div className="action-item">
+               <Link to="/login" className="action-link">
+                 <User size={20} />
+                 <span>Login</span>
+               </Link>
+            </div>
+         )}
+         
+         <div className="action-item">
+            <Heart size={20} />
+            <span>Wishlist</span>
+         </div>
+
+         <div className="action-item bag-icon" onClick={() => navigate('/cart')}>
+            <ShoppingBag size={20} />
+            <span>Bag</span>
+         </div>
+      </div>
     </header>
   );
 };

@@ -1,12 +1,10 @@
-
-
 import './login.css';
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,7 +21,6 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:8000/users/login', login);
 
-      // Save token & user info in localStorage
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
@@ -36,25 +33,33 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <ToastContainer />
-      <h2>Login</h2>
+    <>
+      <Navbar />
+      <div className="login-container">
+        <ToastContainer />
+        <h2>Login to your account</h2>
 
-      <div className="input-container">
-        <label>Email</label>
-        <input type="text" onChange={(e) => onChange(e, 'email')} />
+        <div className="input-container">
+          <label>Email ID</label>
+          <input type="text" onChange={(e) => onChange(e, 'email')} />
+        </div>
+
+        <div className="input-container">
+          <label>Password</label>
+          <input type="password" onChange={(e) => onChange(e, 'password')} />
+        </div>
+        
+        <div style={{ marginTop: '.4rem', marginBottom: '1rem' }}>
+           <Link to="/forgot-password" className="forgot-link">Forgot password?</Link>
+        </div>
+
+        <button className="auth-btn" onClick={handleLogin}>LOGIN</button>
+        
+        <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '14px', color: 'var(--text-muted)' }}>
+           New to Minizon? <Link to="/signup" className="forgot-link">Create an account</Link>
+        </div>
       </div>
-
-      <div className="input-container">
-        <label>Password</label>
-        <input type="password" onChange={(e) => onChange(e, 'password')} />
-      </div>
-      <div style={{ marginTop: '.4rem' }}>
-  <Link to="/forgot-password">Forgot password?</Link>
-</div>
-
-      <button onClick={handleLogin}>Login</button>
-    </div>
+    </>
   );
 };
 

@@ -1,11 +1,10 @@
-
-
 import './signup.css';
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -36,32 +35,39 @@ const Signup = () => {
   };
 
   return (
-    <div className="form-container">
-      <ToastContainer />
-      <h2>Signup</h2>
+    <>
+      <Navbar />
+      <div className="form-container">
+        <ToastContainer />
+        <h2>Signup</h2>
 
-      <div className="input-container">
-        <label>Name</label>
-        <input type="text" onChange={(e) => onChange(e, 'name')} />
+        <div className="input-container">
+          <label>Full Name</label>
+          <input type="text" onChange={(e) => onChange(e, 'name')} />
+        </div>
+
+        <div className="input-container">
+          <label>Email ID</label>
+          <input type="text" onChange={(e) => onChange(e, 'email')} />
+        </div>
+
+        <div className="input-container">
+          <label>Password</label>
+          <input type="password" onChange={(e) => onChange(e, 'password')} />
+        </div>
+
+        <div className="input-container">
+          <label>Confirm Password</label>
+          <input type="password" onChange={(e) => onChange(e, 'confirmpassword')} />
+        </div>
+
+        <button className="auth-btn" onClick={onAddSignup}>SIGN UP</button>
+        
+        <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '14px', color: 'var(--text-muted)' }}>
+           Already have an account? <Link to="/login" style={{color: 'var(--myntra-pink)', fontWeight: '700', textDecoration: 'none'}}>Login</Link>
+        </div>
       </div>
-
-      <div className="input-container">
-        <label>Email</label>
-        <input type="text" onChange={(e) => onChange(e, 'email')} />
-      </div>
-
-      <div className="input-container">
-        <label>Password</label>
-        <input type="password" onChange={(e) => onChange(e, 'password')} />
-      </div>
-
-      <div className="input-container">
-        <label>Confirm Password</label>
-        <input type="password" onChange={(e) => onChange(e, 'confirmpassword')} />
-      </div>
-
-      <button onClick={onAddSignup}>Signup</button>
-    </div>
+    </>
   );
 };
 
