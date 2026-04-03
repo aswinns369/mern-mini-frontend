@@ -7,18 +7,22 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchParams] = useSearchParams();
 
   const user = JSON.parse(localStorage.getItem('user') || 'null');
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
+    setIsLoading(true);
     try {
       const query = searchParams.toString();
       const res = await api.get(`/product?${query}`);
       setProducts(res.data);
     } catch (e) {
       toast.error(e.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -56,66 +60,81 @@ const Home = () => {
       <ToastContainer />
 
       <div className="page-full">
-        <div className="banner-container">
-           <img src="/fashion-banner.png" alt="Big Fashion Festival" className="horizontal-banner" />
-        </div>
+        <div className="main-container">
+          <div className="banner-container">
+             <img src="/fashion-banner.png" alt="Big Fashion Festival" className="horizontal-banner" />
+          </div>
 
         <section className="grid-full">
-          {products.map(item => (
-            <div
-              className="card"
-              key={item._id}
-              onClick={() => navigate(`/product/${item._id}`)}
-            >
-              <div className="img-container">
-                  <img src={item.Image} alt={item.name} />
-                  <div className="actions">
-                    <button
-                        className="btn primary"
-                        onClick={e => {
-                        e.stopPropagation();
-                        addToCart(item._id);
-                        }}
-                    >
-                        ADD TO BAG
-                    </button>
+          {isLoading ? (
+             Array.from({ length: 8 }).map((_, idx) => (
+                <div className="card skeleton-card" key={idx}>
+                   <div className="skeleton img-skeleton"></div>
+                   <div className="pad">
+                      <div className="skeleton text-skeleton title-skeleton"></div>
+                      <div className="skeleton text-skeleton desc-skeleton"></div>
+                      <div className="skeleton text-skeleton price-skeleton"></div>
+                   </div>
+                </div>
+             ))
+          ) : (
+            products.map(item => (
+              <div
+                className="card"
+                key={item._id}
+                onClick={() => navigate(`/product/${item._id}`)}
+              >
+                <div className="img-container">
+                    <img src={item.Image} alt={item.name} loading="lazy" />
+                    <div className="actions">
+                      <button
+                          className="btn primary"
+                          onClick={e => {
+                          e.stopPropagation();
+                          addToCart(item._id);
+                          }}
+                      >
+                          ADD TO BAG
+                      </button>
 
-                    {user && user.id === item.userId && (
-                        <div style={{display: 'flex', gap: '8px', marginTop: '4px'}}>
-                            <button
-                                className="btn green"
-                                onClick={e => {
-                                e.stopPropagation();
-                                navigate(`/edit-product/${item._id}`);
-                                }}
-                            >
-                                Edit
-                            </button>
+                      {user && user.id === item.userId && (
+                          <div style={{display: 'flex', gap: '8px', marginTop: '4px'}}>
+                              <button
+                                  className="btn green"
+                                  onClick={e => {
+                                  e.stopPropagation();
+                                  navigate(`/edit-product/${item._id}`);
+                                  }}
+                              >
+                                  Edit
+                              </button>
 
-                            <button
-                                className="btn red"
-                                onClick={e => {
-                                e.stopPropagation();
-                                handleDelete(item._id); 
-                                }}
-                            >
-                                Delete
-                            </button>
-                        </div>
-                    )}
-                  </div>
+                              <button
+                                  className="btn red"
+                                  onClick={e => {
+                                  e.stopPropagation();
+                                  handleDelete(item._id); 
+                                  }}
+                              >
+                                  Delete
+                              </button>
+                          </div>
+                      )}
+                    </div>
+                </div>
+
+                <div className="pad">
+                  <h3 className="brand">{item.name}</h3>
+                  <p className="desc">{item.category}</p>
+                  <div className="price">Rs. {item.price}</div>
+                </div>
               </div>
+            ))
+          )}
 
-              <div className="pad">
-                <h3 className="brand">{item.name}</h3>
-                <p className="desc">{item.category}</p>
-                <div className="price">Rs. {item.price}</div>
-              </div>
-            </div>
-          ))}
-
-          {!products.length && <div className="empty">No products found.</div>}
+          {!isLoading && !products.length && <div className="empty">No products found.</div>}
         </section>
+        </div>
       </div>
     </>
   );

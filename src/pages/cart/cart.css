@@ -144,18 +144,27 @@
 
 .remove-close {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  font-size: 20px;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  font-size: 14px;
   color: var(--text-muted);
   cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
 }
 .remove-close:hover {
-  color: var(--text-main);
+  color: #ff3f6c;
+  border-color: #ff3f6c;
+  background: #fff9fa;
 }
-
 .cart-right {
   flex: 1;
 }
