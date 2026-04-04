@@ -62,7 +62,16 @@ const Home = () => {
       <div className="page-full">
         <div className="main-container">
           <div className="banner-container">
-             <img src="/fashion-banner.png" alt="Big Fashion Festival" className="horizontal-banner" />
+             <div className="modern-banner">
+                <div className="banner-brand">Minizon</div>
+                <div className="banner-content">
+                  <h1 className="banner-headline">BIG FASHION FESTIVAL</h1>
+                  <p className="banner-subtext">50% to 80% OFF</p>
+                </div>
+                <div className="shape shape-1"></div>
+                <div className="shape shape-2"></div>
+                <div className="shape shape-3"></div>
+             </div>
           </div>
 
         <section className="grid-full">

@@ -28,9 +28,29 @@
   align-items: center;
 }
 
-.myntra-logo {
-  width: 50px;
-  height: 50px;
+/* Minizon Text Branding */
+.minizon-brand {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  user-select: none;
+}
+
+.brand-highlight {
+  color: var(--myntra-pink);
+}
+
+.brand-text {
+  color: var(--text-main);
+}
+
+.brand-icon {
+  margin-left: 2px;
+  color: var(--myntra-pink);
+  margin-top: -6px; /* give it a slight dynamic lift */
 }
 
 .nav-categories {

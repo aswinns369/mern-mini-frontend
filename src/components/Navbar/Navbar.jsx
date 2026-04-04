@@ -71,9 +71,10 @@ const Navbar = () => {
       {/* Mobile Drawer */}
       <div className={`mobile-drawer ${isDrawerOpen ? "open" : ""}`}>
         <div className="drawer-header">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="myntra-logo">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-5l-2.5 2.5-2.5-2.5v5H4v-9l4 4 3-3 3 3 4-4v9h-2z" fill="#ff3f6c"/>
-          </svg>
+          <div className="minizon-brand" onClick={() => { navigate("/"); setIsDrawerOpen(false); }}>
+             <span className="brand-highlight">Mini</span><span className="brand-text">zon</span>
+             <ShoppingBag size={24} className="brand-icon" strokeWidth={2.5} />
+          </div>
           <button className="close-drawer" onClick={() => setIsDrawerOpen(false)}><X size={24} /></button>
         </div>
         <div className="drawer-content">
@@ -97,10 +98,9 @@ const Navbar = () => {
           <div className="hamburger-menu" onClick={() => setIsDrawerOpen(true)}>
             <Menu size={24} color="var(--text-main)" />
           </div>
-          <div className="nav__brand" onClick={() => navigate("/")}>
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="myntra-logo">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-5l-2.5 2.5-2.5-2.5v5H4v-9l4 4 3-3 3 3 4-4v9h-2z" fill="#ff3f6c"/>
-            </svg>
+          <div className="nav__brand minizon-brand" onClick={() => navigate("/")}>
+             <span className="brand-highlight">Mini</span><span className="brand-text">zon</span>
+             {/* <ShoppingBag size={26} className="brand-icon" strokeWidth={2.5} /> */}
           </div>
           <nav className="nav-categories">
             {CATEGORY_OPTIONS.slice(1, 6).map(cat => (
