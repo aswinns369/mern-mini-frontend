@@ -1,4 +1,4 @@
-import "./navbar.css";
+import "./Navbar.css";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Search, User, Heart, ShoppingBag, Menu, X } from "lucide-react";
